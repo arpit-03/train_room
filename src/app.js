@@ -247,8 +247,10 @@ io.on('connection', socket => {
         if (roomList.get(socket.room_id).getPeers().size === 0) {
             roomList.delete(socket.room_id)
         }
-        peerList = roomList.get(socket.room_id).getPeerList();
-        socket.to(socket.room_id).emit('userList', peerList);
+        else{
+            peerList = roomList.get(socket.room_id).getPeerList();
+            socket.to(socket.room_id).emit('userList', peerList);
+        }
         socket.room_id = null
 
 
